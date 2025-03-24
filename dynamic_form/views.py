@@ -2,6 +2,7 @@ from rest_framework import viewsets
 from .models import DynamicForm, DynamicField, FormSubmission
 from .serializers import DynamicFormSerializer, DynamicFieldSerializer, FormSubmissionSerializer
 
+
 class DynamicFormViewSet(viewsets.ModelViewSet):
     """
     API for managing Dynamic Forms.
@@ -9,12 +10,14 @@ class DynamicFormViewSet(viewsets.ModelViewSet):
     queryset = DynamicForm.objects.all()
     serializer_class = DynamicFormSerializer
 
+
 class DynamicFieldViewSet(viewsets.ModelViewSet):
     """
     API for managing Dynamic Fields inside a form.
     """
     queryset = DynamicField.objects.all()
     serializer_class = DynamicFieldSerializer
+
 
 class FormSubmissionViewSet(viewsets.ModelViewSet):
     """
