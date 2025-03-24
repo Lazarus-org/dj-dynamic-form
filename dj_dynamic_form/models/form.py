@@ -1,4 +1,10 @@
-from django.db.models import Model, CharField, DateTimeField, BooleanField, TextField
+from django.db.models import (
+    Model,
+    CharField,
+    DateTimeField,
+    BooleanField,
+    TextField,
+)
 from django.utils.translation import gettext_lazy as _
 
 
@@ -22,6 +28,7 @@ class DynamicForm(Model):
         _("Form Name"),
         unique=True,
         max_length=255,
+        db_index=True,
         help_text=_("The name of the form."),
         db_comment="A unique name for identifying the form.",
     )
