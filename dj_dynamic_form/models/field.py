@@ -6,6 +6,7 @@ from django.db.models import (
     JSONField,
     BooleanField,
     PositiveIntegerField,
+    PROTECT,
 )
 from django.utils.translation import gettext_lazy as _
 
@@ -20,7 +21,7 @@ class DynamicField(Model):
     Attributes:
         form (DynamicForm): Parent form this field belongs to
         name (str): Internal identifier for the field
-        field_type (str): Determines the input type (text, number, dropdown etc.)
+        field_type (FieldType): Determines the field type this field belongs to (text, number, dropdown etc.)
         label (str, optional): Display label (defaults to name if not provided)
         is_required (bool): Whether the field must be filled
         choices (JSON, optional): Available options for dropdown/radio/checkbox fields
@@ -28,19 +29,6 @@ class DynamicField(Model):
         validation_rules (JSON, optional): Custom validation constraints
         order (int): Position of the field in the form layout
     """
-
-    FORM_FIELD_TYPES = [
-        ("text", _("Text Field")),
-        ("textarea", _("Textarea Field")),
-        ("number", _("Number Field")),
-        ("email", _("Email Field")),
-        ("boolean", _("Boolean Field")),
-        ("date", _("Date Field")),
-        ("dropdown", _("Dropdown Field")),
-        ("checkbox", _("Checkbox Field")),
-        ("radio", _("Radio Field")),
-        ("file", _("File Field")),
-    ]
 
     form = ForeignKey(
         to="DynamicForm",
@@ -56,12 +44,14 @@ class DynamicField(Model):
         help_text=_("The name of the field."),
         db_comment="A unique identifier for the field inside a form.",
     )
-    field_type = CharField(
-        _("Field Type"),
-        max_length=20,
-        choices=FORM_FIELD_TYPES,
-        help_text=_("The type of field (e.g., text, number, dropdown, etc.)."),
-        db_comment="Defines the type of input field.",
+    field_type = ForeignKey(
+        to="FieldType",
+        on_delete=PROTECT,
+        verbose_name=_("Field Type"),
+        help_text=_(
+            "The type of field (e.g., text, number, dropdown, etc.), linked to a FieldType entry."
+        ),
+        db_comment="References the field type definition.",
     )
     label = CharField(
         _("Display Label"),
@@ -97,7 +87,9 @@ class DynamicField(Model):
         _("Validation Rules"),
         blank=True,
         null=True,
-        help_text=_("Optional validation rules (e.g., min_length, max_value, custom_validation)."),
+        help_text=_(
+            "Optional validation rules (e.g., min_length, max_value, custom_validation)."
+        ),
         db_comment="JSON storing validation constraints.",
     )
     order = PositiveIntegerField(
@@ -115,7 +107,7 @@ class DynamicField(Model):
         unique_together = ["form", "name"]
 
     def __str__(self):
-        return f"{self.form.name} - {self.name}"
+        return f"{self.name}- Form #{self.form_id}"
 
     def get_label(self):
         """Returns the display label for the field, falling back to the name if no label is set."""

@@ -33,7 +33,7 @@ class DynamicForm(Model):
         db_comment="A short description about the form's purpose.",
     )
     is_active = BooleanField(
-        _("Active Status"),
+        _("Active"),
         default=True,
         help_text=_("Whether this form is currently active and accepting submissions."),
         db_comment="Controls if the form is available for use.",
