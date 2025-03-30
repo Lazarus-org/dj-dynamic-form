@@ -1,19 +1,19 @@
 from django.db.models import (
-    Model,
+    CASCADE,
+    PROTECT,
+    BooleanField,
     CharField,
     ForeignKey,
-    CASCADE,
     JSONField,
-    BooleanField,
+    Model,
     PositiveIntegerField,
-    PROTECT,
 )
 from django.utils.translation import gettext_lazy as _
 
 
 class DynamicField(Model):
-    """
-    Defines a single field within a dynamic form with configurable properties.
+    """Defines a single field within a dynamic form with configurable
+    properties.
 
     This model represents all possible field types that can be added to a DynamicForm,
     with attributes controlling the field's behavior, validation, and presentation.
@@ -28,6 +28,7 @@ class DynamicField(Model):
         default_value (JSON, optional): Initial value for the field
         validation_rules (JSON, optional): Custom validation constraints
         order (int): Position of the field in the form layout
+
     """
 
     form = ForeignKey(
@@ -110,5 +111,6 @@ class DynamicField(Model):
         return f"{self.name}- Form #{self.form_id}"
 
     def get_label(self):
-        """Returns the display label for the field, falling back to the name if no label is set."""
+        """Returns the display label for the field, falling back to the name if
+        no label is set."""
         return self.label or self.name
