@@ -1,19 +1,18 @@
 from django.conf import settings
-from django.utils.translation import gettext_lazy as _
 from django.db.models import (
-    Model,
-    ForeignKey,
-    JSONField,
-    SET_NULL,
     CASCADE,
+    SET_NULL,
     DateTimeField,
+    ForeignKey,
     Index,
+    JSONField,
+    Model,
 )
+from django.utils.translation import gettext_lazy as _
 
 
 class FormSubmission(Model):
-    """
-    Records a user's submission of data to a dynamic form.
+    """Records a user's submission of data to a dynamic form.
 
     This model stores the actual data submitted by users for each DynamicForm instance,
     along with metadata about the submission. The submitted data is stored as JSON
@@ -24,6 +23,7 @@ class FormSubmission(Model):
         form (DynamicForm): Reference to the submitted form definition
         submitted_data (JSON): Structured data containing all field responses
         submitted_at (datetime): Timestamp of when the submission occurred
+
     """
 
     user = ForeignKey(

@@ -1,16 +1,9 @@
-from django.db.models import (
-    Model,
-    CharField,
-    DateTimeField,
-    BooleanField,
-    TextField,
-)
+from django.db.models import BooleanField, CharField, DateTimeField, Model, TextField
 from django.utils.translation import gettext_lazy as _
 
 
 class DynamicForm(Model):
-    """
-    A configurable form that can be created dynamically with custom fields.
+    """A configurable form that can be created dynamically with custom fields.
 
     This model serves as the container for a form definition, storing metadata about
     the form such as its name, description, and active status. The actual fields
@@ -22,6 +15,7 @@ class DynamicForm(Model):
         is_active (bool): Toggles whether the form is available for submissions
         created_at (datetime): Auto-generated creation timestamp
         updated_at (datetime): Auto-generated last modification timestamp
+
     """
 
     name = CharField(

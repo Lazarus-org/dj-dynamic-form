@@ -1,17 +1,16 @@
 from django.db.models import (
-    Model,
-    CharField,
-    TextField,
-    DateTimeField,
     BooleanField,
+    CharField,
+    DateTimeField,
+    Model,
+    TextField,
     UniqueConstraint,
 )
 from django.utils.translation import gettext_lazy as _
 
 
 class FieldType(Model):
-    """
-    Model representing a type of field that can be used in a dynamic form.
+    """Model representing a type of field that can be used in a dynamic form.
 
     This model replaces the static `FORM_FIELD_TYPES` enum, allowing field types to be
     defined dynamically in the database. It enables users to extend the system with custom
@@ -22,6 +21,7 @@ class FieldType(Model):
     Examples:
         - name: "text", label: "Text Field", description: "A single-line text input."
         - name: "dropdown", label: "Dropdown Field", description: "A selectable list."
+
     """
 
     name = CharField(
@@ -68,10 +68,10 @@ class FieldType(Model):
         constraints = [UniqueConstraint(fields=["name"], name="unique_field_type_name")]
 
     def __str__(self):
-        """
-        Returns the human-readable label of the field type.
+        """Returns the human-readable label of the field type.
 
         Returns:
             str: The label of this field type (e.g., 'Text Field').
+
         """
         return self.label
