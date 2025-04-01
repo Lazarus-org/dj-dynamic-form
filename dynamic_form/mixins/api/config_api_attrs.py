@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Optional, Type, Union
 
 from rest_framework.pagination import BasePagination
 from rest_framework.parsers import BaseParser
-from rest_framework.permissions import BasePermission, AllowAny
+from rest_framework.permissions import AllowAny, BasePermission
 from rest_framework.throttling import BaseThrottle
 
 from dynamic_form.settings.conf import config

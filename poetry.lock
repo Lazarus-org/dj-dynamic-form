@@ -656,6 +656,22 @@ files = [
 ]
 
 [[package]]
+name = "drf-nested-routers"
+version = "0.94.1"
+description = "Nested resources for the Django Rest Framework"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "drf-nested-routers-0.94.1.tar.gz", hash = "sha256:2b846385ed95c9f17bf4242db3b264ac826b5af00dda6c737d3fe7cc7bf2c7db"},
+    {file = "drf_nested_routers-0.94.1-py2.py3-none-any.whl", hash = "sha256:3a8ec45a025c0f39188ec1ec415244beb875a6f4db87911a1f5a606d09b68c9f"},
+]
+
+[package.dependencies]
+Django = ">=4.2"
+djangorestframework = ">=3.14.0"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.2"
 description = "Backport of PEP 654 (exception groups)"
@@ -2036,4 +2052,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.9,<4.0"
-content-hash = "50b264abb8727fe2a65e1bd7645f82de9b2d2750e512838b8ebf657d80521602"
+content-hash = "21096c7fb4be7f85f8b7e60b3aff637998b9dee17f447e09811943b9e28fd0b3"

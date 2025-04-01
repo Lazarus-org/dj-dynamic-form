@@ -5,13 +5,13 @@ from django.utils.module_loading import import_string
 
 from dynamic_form.constants.default_settings import (
     admin_settings,
+    api_dynamic_field_settings,
+    api_dynamic_form_settings,
+    api_field_type_settings,
+    api_form_submission_settings,
     api_settings,
     serializer_settings,
     throttle_settings,
-    api_dynamic_form_settings,
-    api_dynamic_field_settings,
-    api_field_type_settings,
-    api_form_submission_settings,
 )
 from dynamic_form.constants.types import DefaultPath, OptionalPaths
 
@@ -19,9 +19,10 @@ from dynamic_form.constants.types import DefaultPath, OptionalPaths
 class DynamicFormConfig:
     """A configuration handler.
 
-    Allows dynamic settings loading from Django settings with default fallbacks for
-    all DynamicForm-related APIs, including DynamicForm, DynamicField, FieldType,
-    FormSubmission, and their admin variants.
+    Allows dynamic settings loading from Django settings with default
+    fallbacks for all DynamicForm-related APIs, including DynamicForm,
+    DynamicField, FieldType, FormSubmission, and their admin variants.
+
     """
 
     prefix = "DYNAMIC_FORM_"
@@ -548,6 +549,7 @@ class DynamicFormConfig:
 
         Returns:
             Any: The value of the setting or the default value if not found.
+
         """
         return getattr(settings, setting_name, default_value)
 
@@ -566,6 +568,7 @@ class DynamicFormConfig:
         Returns:
             Optional[Union[Type[Any], List[Type[Any]]]]: The imported method or class or None
              if import fails or the path is invalid.
+
         """
         _path: DefaultPath = self.get_setting(setting_name, default_path)
 

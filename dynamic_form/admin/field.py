@@ -7,9 +7,7 @@ from dynamic_form.settings.conf import config
 
 @admin.register(DynamicField, site=config.admin_site_class)
 class DynamicFieldAdmin(AdminPermissionControlMixin, admin.ModelAdmin):
-    """
-    Admin configuration for managing Dynamic Fields within Forms.
-    """
+    """Admin configuration for managing Dynamic Fields within Forms."""
 
     list_display = ("id", "name", "form", "field_type", "is_required", "order")
     list_display_links = ("id", "name")

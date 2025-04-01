@@ -7,7 +7,8 @@ from dynamic_form.settings.conf import config
 
 
 def dynamic_form_serializer_class(is_admin: bool = False) -> Type[BaseSerializer]:
-    """Get the serializer class for the DynamicForm model, either from config or the default.
+    """Get the serializer class for the DynamicForm model, either from config
+    or the default.
 
     Args:
         is_admin (bool): If True, returns the admin-specific serializer; otherwise, returns the regular serializer.
@@ -15,6 +16,7 @@ def dynamic_form_serializer_class(is_admin: bool = False) -> Type[BaseSerializer
 
     Returns:
         The configured serializer class from settings or the default DynamicFormSerializer.
+
     """
     from dynamic_form.api.serializers.form import DynamicFormSerializer
 
@@ -24,7 +26,8 @@ def dynamic_form_serializer_class(is_admin: bool = False) -> Type[BaseSerializer
 
 
 def dynamic_field_serializer_class(is_admin: bool = False) -> Type[BaseSerializer]:
-    """Get the serializer class for the DynamicField model, either from config or the default.
+    """Get the serializer class for the DynamicField model, either from config
+    or the default.
 
     Args:
         is_admin (bool): If True, returns the admin-specific serializer; otherwise, returns the regular serializer.
@@ -32,6 +35,7 @@ def dynamic_field_serializer_class(is_admin: bool = False) -> Type[BaseSerialize
 
     Returns:
         The configured serializer class from settings or the default DynamicFieldSerializer.
+
     """
     from dynamic_form.api.serializers.form import DynamicFieldSerializer
 
@@ -41,7 +45,8 @@ def dynamic_field_serializer_class(is_admin: bool = False) -> Type[BaseSerialize
 
 
 def field_type_serializer_class(is_admin: bool = False) -> Type[BaseSerializer]:
-    """Get the serializer class for the FieldType model, either from config or the default.
+    """Get the serializer class for the FieldType model, either from config or
+    the default.
 
     Args:
         is_admin (bool): If True, returns the admin-specific serializer; otherwise, returns the regular serializer.
@@ -49,6 +54,7 @@ def field_type_serializer_class(is_admin: bool = False) -> Type[BaseSerializer]:
 
     Returns:
         The configured serializer class from settings or the default FieldTypeSerializer.
+
     """
     from dynamic_form.api.serializers.field_type import FieldTypeSerializer
 
@@ -58,7 +64,8 @@ def field_type_serializer_class(is_admin: bool = False) -> Type[BaseSerializer]:
 
 
 def form_submission_serializer_class(is_admin: bool = False) -> Type[BaseSerializer]:
-    """Get the serializer class for the FormSubmission model, either from config or the default.
+    """Get the serializer class for the FormSubmission model, either from
+    config or the default.
 
     Args:
         is_admin (bool): If True, returns the admin-specific serializer; otherwise, returns the regular serializer.
@@ -66,6 +73,7 @@ def form_submission_serializer_class(is_admin: bool = False) -> Type[BaseSeriali
 
     Returns:
         The configured serializer class from settings or the default FormSubmissionSerializer.
+
     """
     from dynamic_form.api.serializers.form_submission import FormSubmissionSerializer
 

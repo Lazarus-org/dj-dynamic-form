@@ -1,4 +1,4 @@
-from .form import DynamicFormViewSet, AdminDynamicFormViewSet
-from .field_type import FieldTypeViewSet, AdminFieldTypeViewSet
-from .field import DynamicFieldViewSet, AdminDynamicFieldViewSet
-from .form_submission import FormSubmissionViewSet, AdminFormSubmissionViewSet
+from .field import AdminDynamicFieldViewSet, DynamicFieldViewSet
+from .field_type import AdminFieldTypeViewSet, FieldTypeViewSet
+from .form import AdminDynamicFormViewSet, DynamicFormViewSet
+from .form_submission import AdminFormSubmissionViewSet, FormSubmissionViewSet

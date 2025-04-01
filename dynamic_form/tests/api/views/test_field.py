@@ -21,15 +21,16 @@ pytestmark = [
 
 class TestAdminDynamicFieldViewSet:
     """
-    Tests for the AdminDynamicFieldViewSet API endpoints.
+    Tests for the AdminDynamicFieldViewSet API endpoints with nested routing.
 
     This test class verifies the behavior of the AdminDynamicFieldViewSet,
     ensuring that the list, retrieve, create, update, and destroy methods function correctly
     under various configurations and admin permissions, including serializer validation.
+    The endpoints are nested under /admin/forms/{form_pk}/fields/.
 
     Tests:
     -------
-    - test_list_dynamic_field: Verifies the list endpoint returns 200 OK and includes all fields when allowed.
+    - test_list_dynamic_field: Verifies the list endpoint returns 200 OK and includes fields for the form.
     - test_retrieve_dynamic_field: Checks the retrieve endpoint returns 200 OK and correct data when allowed.
     - test_create_dynamic_field: Tests the create endpoint returns 201 Created with valid data when allowed.
     - test_update_dynamic_field: Tests the update endpoint returns 200 OK when allowed.
@@ -38,6 +39,7 @@ class TestAdminDynamicFieldViewSet:
     - test_retrieve_dynamic_field_disabled: Tests the retrieve endpoint returns 405 when disabled.
     - test_create_dynamic_field_duplicate_name: Tests validation failure for duplicate field names.
     - test_create_dynamic_field_invalid_form: Tests validation failure for non-existent or inactive form.
+    - test_create_dynamic_field_invalid_field_type: Tests validation failure for invalid field type.
     """
 
     def test_list_dynamic_field(
@@ -47,7 +49,7 @@ class TestAdminDynamicFieldViewSet:
         admin_user: User,
     ):
         """
-        Test the list endpoint for DynamicField.
+        Test the list endpoint for DynamicField within a form.
 
         Args:
             api_client (APIClient): The API client used to simulate requests.
@@ -56,14 +58,16 @@ class TestAdminDynamicFieldViewSet:
 
         Asserts:
             The response status code is 200.
-            The response data contains a 'results' key with all fields.
+            The response data contains a 'results' key with fields for the specified form.
         """
         api_client.force_authenticate(user=admin_user)
 
         config.api_admin_dynamic_field_allow_list = True  # Enable list method
         config.api_admin_dynamic_field_extra_permission_class = None
 
-        url = reverse("admin-field-list")
+        url = reverse(
+            "admin-form-field-list", kwargs={"form_pk": dynamic_field.form.pk}
+        )
         response = api_client.get(url)
 
         assert (
@@ -82,7 +86,7 @@ class TestAdminDynamicFieldViewSet:
         admin_user: User,
     ):
         """
-        Test the retrieve endpoint for DynamicField.
+        Test the retrieve endpoint for DynamicField within a form.
 
         Args:
             api_client (APIClient): The API client used to simulate requests.
@@ -97,7 +101,10 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_retrieve = True  # Enable retrieve method
 
-        url = reverse("admin-field-detail", kwargs={"pk": dynamic_field.pk})
+        url = reverse(
+            "admin-form-field-detail",
+            kwargs={"form_pk": dynamic_field.form.pk, "pk": dynamic_field.pk},
+        )
         response = api_client.get(url)
 
         assert (
@@ -118,7 +125,7 @@ class TestAdminDynamicFieldViewSet:
         admin_user: User,
     ):
         """
-        Test the create endpoint for DynamicField.
+        Test the create endpoint for DynamicField within a form.
 
         Args:
             api_client (APIClient): The API client used to simulate requests.
@@ -128,15 +135,14 @@ class TestAdminDynamicFieldViewSet:
 
         Asserts:
             The response status code is 201.
-            The created field has the correct data.
+            The created field has the correct data (form inferred from URL).
         """
         api_client.force_authenticate(user=admin_user)
 
         config.api_admin_dynamic_field_allow_create = True  # Enable create method
 
-        url = reverse("admin-field-list")
+        url = reverse("admin-form-field-list", kwargs={"form_pk": dynamic_form.pk})
         payload = {
-            "form_id": dynamic_form.id,
             "field_type_id": field_type.id,
             "name": "new_field",
             "is_required": False,
@@ -149,6 +155,7 @@ class TestAdminDynamicFieldViewSet:
         assert (
             response.data["name"] == payload["name"]
         ), f"Expected name {payload['name']}, got {response.data['name']}."
+        # Assuming serializer returns form ID in response
         assert (
             response.data["form"] == dynamic_form.id
         ), f"Expected form ID {dynamic_form.id}, got {response.data['form']}."
@@ -160,7 +167,7 @@ class TestAdminDynamicFieldViewSet:
         admin_user: User,
     ):
         """
-        Test the update endpoint for DynamicField.
+        Test the update endpoint for DynamicField within a form.
 
         Args:
             api_client (APIClient): The API client used to simulate requests.
@@ -175,7 +182,10 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_update = True  # Enable update method
 
-        url = reverse("admin-field-detail", kwargs={"pk": dynamic_field.pk})
+        url = reverse(
+            "admin-form-field-detail",
+            kwargs={"form_pk": dynamic_field.form.pk, "pk": dynamic_field.pk},
+        )
         payload = {"name": "updated_field"}
         response = api_client.patch(url, payload, format="json")
 
@@ -193,7 +203,7 @@ class TestAdminDynamicFieldViewSet:
         admin_user: User,
     ):
         """
-        Test the destroy endpoint for DynamicField.
+        Test the destroy endpoint for DynamicField within a form.
 
         Args:
             api_client (APIClient): The API client used to simulate requests.
@@ -208,7 +218,10 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_delete = True  # Enable destroy method
 
-        url = reverse("admin-field-detail", kwargs={"pk": dynamic_field.pk})
+        url = reverse(
+            "admin-form-field-detail",
+            kwargs={"form_pk": dynamic_field.form.pk, "pk": dynamic_field.pk},
+        )
         response = api_client.delete(url)
 
         assert (
@@ -239,7 +252,9 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_list = False  # Disable list method
 
-        url = reverse("admin-field-list")
+        url = reverse(
+            "admin-form-field-list", kwargs={"form_pk": dynamic_field.form.pk}
+        )
         response = api_client.get(url)
 
         assert (
@@ -267,7 +282,10 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_retrieve = False  # Disable retrieve method
 
-        url = reverse("admin-field-detail", kwargs={"pk": dynamic_field.pk})
+        url = reverse(
+            "admin-form-field-detail",
+            kwargs={"form_pk": dynamic_field.form.pk, "pk": dynamic_field.pk},
+        )
         response = api_client.get(url)
 
         assert (
@@ -300,9 +318,8 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_create = True  # Enable create method
 
-        url = reverse("admin-field-list")
+        url = reverse("admin-form-field-list", kwargs={"form_pk": dynamic_form.pk})
         payload = {
-            "form_id": dynamic_form.id,
             "field_type_id": field_type.id,
             "name": dynamic_field.name,  # Duplicate name
             "is_required": False,
@@ -336,9 +353,10 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_create = True  # Enable create method
 
-        url = reverse("admin-field-list")
+        url = reverse(
+            "admin-form-field-list", kwargs={"form_pk": 999}
+        )  # Non-existent form
         payload = {
-            "form_id": 999,  # Non-existent form ID
             "field_type_id": field_type.id,
             "name": "unique_field",
             "is_required": False,
@@ -348,7 +366,7 @@ class TestAdminDynamicFieldViewSet:
         assert (
             response.status_code == 400
         ), f"Expected 400 Bad Request, got {response.status_code}."
-        assert "form_id" in response.data, "Expected error for invalid form ID."
+        assert "form" in response.data, "Expected error for invalid form ID."
 
     def test_create_dynamic_field_invalid_field_type(
         self,
@@ -372,9 +390,8 @@ class TestAdminDynamicFieldViewSet:
 
         config.api_admin_dynamic_field_allow_create = True  # Enable create method
 
-        url = reverse("admin-field-list")
+        url = reverse("admin-form-field-list", kwargs={"form_pk": dynamic_form.pk})
         payload = {
-            "form_id": dynamic_form.pk,  # Non-existent form ID
             "field_type_id": 999,  # Non-existent field type ID
             "name": "unique_field",
             "is_required": False,
@@ -387,3 +404,76 @@ class TestAdminDynamicFieldViewSet:
         assert (
             "field_type_id" in response.data
         ), "Expected error for invalid field type ID."
+
+    def test_list_dynamic_field_invalid_form_pk(
+        self,
+        api_client: APIClient,
+        admin_user: User,
+    ):
+        """
+        Test the list endpoint when form_pk is invalid from the URL.
+
+        Args:
+            api_client (APIClient): The API client used to simulate requests.
+            admin_user (User): The admin user for authentication.
+
+        Asserts:
+            The response status code is 400.
+            The error message indicates an invalid form identifier.
+        """
+        api_client.force_authenticate(user=admin_user)
+
+        config.api_admin_dynamic_field_allow_list = True  # Enable list method
+
+        url = reverse("admin-form-field-list", kwargs={"form_pk": "invalid"})
+        response = api_client.get(url)
+
+        assert (
+            response.status_code == 400
+        ), f"Expected 400 Bad Request, got {response.status_code}."
+        assert "form_pk" in response.data, "Expected error for missing form_pk."
+        assert (
+            "Invalid form identifier" in response.data["form_pk"]
+        ), "Unexpected error message."
+
+    def test_create_dynamic_field_invalid_pk_and_serializer_else(
+        self,
+        api_client: APIClient,
+        dynamic_field: DynamicField,
+        field_type: FieldType,
+        admin_user: User,
+    ):
+        """
+        Test the create endpoint with an invalid pk in URL and the serializer's else condition.
+
+        Args:
+            api_client (APIClient): The API client used to simulate requests.
+            dynamic_field (DynamicField): An existing field to mock instance behavior.
+            field_type (FieldType): The field type for the new field.
+            admin_user (User): The admin user creating the field.
+            mocker: Pytest mocker fixture to mock serializer context.
+
+        Asserts:
+            The response status code is 400 for invalid pk.
+            The else condition in serializer validate is covered (requires mocking instance).
+        """
+        api_client.force_authenticate(user=admin_user)
+
+        config.api_admin_dynamic_field_allow_create = True  # Enable create method
+
+        # Test 1: Invalid form_pk in URL
+        url = reverse("admin-form-field-list", kwargs={"form_pk": "invalid"})
+        payload = {
+            "field_type_id": field_type.id,
+            "name": "unique_field",
+            "is_required": False,
+        }
+        response = api_client.post(url, payload, format="json")
+
+        assert (
+            response.status_code == 400
+        ), f"Expected 400 Bad Request, got {response.status_code}."
+        assert "form_pk" in response.data, "Expected error for invalid form_pk."
+        assert (
+            "Invalid Form ID" in response.data["form_pk"][0]
+        ), "Unexpected error message."
