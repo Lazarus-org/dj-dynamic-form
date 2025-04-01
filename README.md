@@ -154,74 +154,74 @@ The admin endpoints allow admin users (default permission is set to `IsAdminUser
 
 ### Dynamic Forms (`/admin/forms/`)
 
-- **List Forms**: 
+- **List Forms**:
 
   Fetches all dynamic forms. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_LIST`.
-- **Retrieve a Form**: 
+- **Retrieve a Form**:
 
   Retrieves a specific form by ID. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_RETRIEVE`.
-- **Create a Form**: 
+- **Create a Form**:
 
   Creates a new form. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_CREATE`.
-- **Update a Form**: 
+- **Update a Form**:
 
   Updates an existing form (e.g., toggling `is_active`). Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_UPDATE`.
-- **Delete a Form**: 
+- **Delete a Form**:
 
   Deletes an existing form. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_DELETE`.
 
 ### Dynamic Fields (`/admin/forms/{form_id}/fields/`)
 
-- **List Fields**: 
+- **List Fields**:
 
   Fetches all fields for a specific form. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_LIST`.
-- **Retrieve a Field**: 
+- **Retrieve a Field**:
 
   Retrieves a specific field by ID within a form. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_RETRIEVE`.
-- **Create a Field**: 
+- **Create a Field**:
 
   Creates a new field for the specified form. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_CREATE`.
-- **Update a Field**: 
+- **Update a Field**:
 
   Updates an existing field (e.g., changing `is_required`). Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_UPDATE`.
-- **Delete a Field**: 
+- **Delete a Field**:
 
   Deletes an existing field from the form. Controlled by `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_DELETE`.
 
 ### Field Types (`/admin/field-types/`)
 
-- **List Field Types**: 
+- **List Field Types**:
 
   Fetches all field types. Controlled by `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_LIST`.
-- **Retrieve a Field Type**: 
+- **Retrieve a Field Type**:
 
   Retrieves a specific field type by ID. Controlled by `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_RETRIEVE`.
-- **Create a Field Type**: 
+- **Create a Field Type**:
 
   Creates a new field type. Controlled by `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_CREATE`.
-- **Update a Field Type**: 
+- **Update a Field Type**:
 
   Updates an existing field type (e.g., changing `is_active`). Controlled by `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_UPDATE`.
-- **Delete a Field Type**: 
+- **Delete a Field Type**:
 
   Deletes an existing field type. Controlled by `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_DELETE`.
 
 
 ### Form Submissions (`/admin/form-submissions/`)
 
-- **List Submissions**: 
+- **List Submissions**:
 
   Fetches all submissions. Controlled by `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_LIST`.
-- **Retrieve a Submission**: 
+- **Retrieve a Submission**:
 
   Retrieves a specific submission by ID. Controlled by `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_RETRIEVE`.
-- **Create a Submission**: 
+- **Create a Submission**:
 
   Creates a new submission (admin use case). Controlled by `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_CREATE`.
-- **Update a Submission**: 
+- **Update a Submission**:
 
   Updates an existing submission. Controlled by `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_UPDATE`.
-- **Delete a Submission**: 
+- **Delete a Submission**:
 
   Deletes an existing submission. Controlled by `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_DELETE`.
 
@@ -233,19 +233,19 @@ The user endpoints allow authenticated users to interact with forms and manage t
 
 ### Forms (`/forms/`)
 
-- **List Forms**: 
+- **List Forms**:
 
   Fetches all active forms available to users. Controlled by `DYNAMIC_FORM_API_DYNAMIC_FORM_ALLOW_LIST`.
-- **Retrieve a Form**: 
+- **Retrieve a Form**:
 
   Retrieves a specific form by ID. Controlled by `DYNAMIC_FORM_API_DYNAMIC_FORM_ALLOW_RETRIEVE`.
 
 ### Fields (`/fields/`)
 
-- **List Fields**: 
+- **List Fields**:
 
   Fetches all fields available to users. Controlled by `DYNAMIC_FORM_API_DYNAMIC_FIELD_ALLOW_LIST`.
-- **Retrieve a Field**: 
+- **Retrieve a Field**:
 
   Retrieves a specific field by ID. Controlled by `DYNAMIC_FORM_API_DYNAMIC_FIELD_ALLOW_RETRIEVE`.
 
@@ -267,13 +267,13 @@ The user endpoints allow authenticated users to interact with forms and manage t
 - **Retrieve a Submission**:
 
   Retrieves a specific user submission by ID. Controlled by `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_RETRIEVE`.
-- **Create a Submission**: 
+- **Create a Submission**:
 
   Submits data for a form. Controlled by `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_CREATE`.
-- **Update a Submission**: 
+- **Update a Submission**:
 
   Updates an existing user submission. Controlled by `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_UPDATE`.
-- **Delete a Submission**: 
+- **Delete a Submission**:
 
   Deletes an existing user submission. Controlled by `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_DELETE`.
 
@@ -1219,736 +1219,736 @@ Below is a detailed description of each setting in `dj-dynamic-form`, helping yo
 ---
 
 ### `DYNAMIC_FORM_ADMIN_HAS_ADD_PERMISSION`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Controls whether administrators can add new records (e.g., forms, fields) via the admin interface. Set to `False` to disable this capability across all admin models.
 
 ---
 
 ### `DYNAMIC_FORM_ADMIN_HAS_CHANGE_PERMISSION`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Determines whether administrators can modify existing records in the admin interface. Set to `False` to make all admin models read-only for edits.
 
 ---
 
 ### `DYNAMIC_FORM_ADMIN_HAS_DELETE_PERMISSION`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Controls whether administrators can delete records via the admin interface. Set to `False` to prevent deletion of forms, fields, and submissions.
 
 ---
 
 ### `DYNAMIC_FORM_ADMIN_HAS_MODULE_PERMISSION`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Governs module-level access to the `dj-dynamic-form` admin interface. Set to `False` to restrict access to the entire admin module for all models.
 
 ---
 
 ### `DYNAMIC_FORM_ADMIN_SITE_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"django.contrib.admin.sites.AdminSite"`  
+**Type**: `Optional[str]`
+**Default**: `"django.contrib.admin.sites.AdminSite"`
 **Description**: Specifies a custom `AdminSite` class for the `dj-dynamic-form` admin interface. Use this to integrate a custom admin site subclass, enhancing the admin panel's appearance or behavior. Set to `None` to use a different default site.
 
 ---
 
 ### `DYNAMIC_FORM_BASE_USER_THROTTLE_RATE`
-**Type**: `str`  
-**Default**: `"30/minute"`  
+**Type**: `str`
+**Default**: `"30/minute"`
 **Description**: Sets the API throttle rate for regular authenticated users (e.g., `"30/minute"`, `"50/hour"`). Adjust this to limit how often non-staff users can make requests.
 
 ---
 
 ### `DYNAMIC_FORM_STAFF_USER_THROTTLE_RATE`
-**Type**: `str`  
-**Default**: `"100/minute"`  
+**Type**: `str`
+**Default**: `"100/minute"`
 **Description**: Defines the API throttle rate for staff/admin users (e.g., `"100/minute"`, `"1000/day"`). Typically higher than the base rate, this can be adjusted to give privileged users more access.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"rest_framework.permissions.IsAdminUser"`  
+**Type**: `Optional[str]`
+**Default**: `"rest_framework.permissions.IsAdminUser"`
 **Description**: Specifies the DRF permission class for admin-level API endpoints. Customize this (e.g., `"path.to.CustomPermission"`) to enforce specific access rules for admin views.
 
 ---
 
 ### `DYNAMIC_FORM_USER_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.user.UserSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.user.UserSerializer"`
 **Description**: Defines the serializer class for user objects in API responses. Customize this (e.g., `"myapp.serializers.CustomUserSerializer"`) to change how user data is serialized.
 
 ---
 
 ### `DYNAMIC_FORM_API_USER_SERIALIZER_FIELDS`
-**Type**: `List[str]`  
-**Default**: Uses `USERNAME_FIELD` and `REQUIRED_FIELDS` from the user model if not provided  
+**Type**: `List[str]`
+**Default**: Uses `USERNAME_FIELD` and `REQUIRED_FIELDS` from the user model if not provided
 **Description**: Specifies the fields included in the user serializer output. Adjust this list to expose only the desired user attributes in API responses (e.g., `["id", "username", "email"]`).
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.forms.DynamicFormSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.forms.DynamicFormSerializer"`
 **Description**: Defines the serializer class for `DynamicForm` objects in public API endpoints. Customize this to alter how forms are serialized for non-admin users.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["created_at", "updated_at"]`  
+**Type**: `List[str]`
+**Default**: `["created_at", "updated_at"]`
 **Description**: Lists fields that can be used to order `DynamicForm` API responses. Add or remove fields to control sorting options for form listings.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "description"]`  
+**Type**: `List[str]`
+**Default**: `["name", "description"]`
 **Description**: Specifies fields searchable in `DynamicForm` API endpoints. Modify this to allow filtering forms by additional attributes.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for `DynamicForm` API endpoints. Set to a custom path (e.g., `"myapp.throttles.CustomThrottle"`) or `None` to disable throttling.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for `DynamicForm` API responses. Customize this (e.g., `"myapp.pagination.CustomPagination"`) or set to `None` to disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra DRF permission class for `DynamicForm` API endpoints. Use this (e.g., `"myapp.permissions.ExtraPermission"`) for additional access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for handling `DynamicForm` API request data. Modify this to support additional content types or restrict parsing options.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom `django-filter` filterset class for `DynamicForm` API endpoints. Set to a path (e.g., `"myapp.filters.FormFilter"`) to enable advanced filtering.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all forms via the public `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FORM_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual forms by ID via the public `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.DynamicFormSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.DynamicFormSerializer"`
 **Description**: Defines the serializer class for `DynamicForm` objects in admin API endpoints. Customize this for admin-specific form serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "created_at", "updated_at"]`  
+**Type**: `List[str]`
+**Default**: `["name", "created_at", "updated_at"]`
 **Description**: Lists fields for ordering `DynamicForm` responses in admin API endpoints. Adjust this to customize admin sorting options.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "description"]`  
+**Type**: `List[str]`
+**Default**: `["name", "description"]`
 **Description**: Specifies searchable fields in admin `DynamicForm` API endpoints. Modify this to enhance admin search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for admin `DynamicForm` API endpoints. Customize or set to `None` as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for admin `DynamicForm` API responses. Adjust or disable as required.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for admin `DynamicForm` API endpoints. Use this for additional admin access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for admin `DynamicForm` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for admin `DynamicForm` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all forms via the admin `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual forms by ID via the admin `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_CREATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits creating new forms via the admin `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_UPDATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows updating existing forms via the admin `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FORM_ALLOW_DELETE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits deleting forms via the admin `DynamicForm` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.field.DynamicFieldSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.field.DynamicFieldSerializer"`
 **Description**: Defines the serializer class for `DynamicField` objects in public API endpoints. Customize this for field serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "order"]`  
+**Type**: `List[str]`
+**Default**: `["name", "order"]`
 **Description**: Lists fields for ordering `DynamicField` API responses. Adjust to control field sorting options.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "form__name"]`  
+**Type**: `List[str]`
+**Default**: `["name", "form__name"]`
 **Description**: Specifies searchable fields in `DynamicField` API endpoints. Modify to enhance field search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for `DynamicField` API endpoints. Customize or disable as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for `DynamicField` API responses. Adjust or disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for `DynamicField` API endpoints. Use this for additional access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for `DynamicField` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for `DynamicField` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all fields via the public `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_DYNAMIC_FIELD_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual fields by ID via the public `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.field.DynamicFieldSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.field.DynamicFieldSerializer"`
 **Description**: Defines the serializer class for `DynamicField` objects in admin API endpoints. Customize for admin-specific field serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["order"]`  
+**Type**: `List[str]`
+**Default**: `["order"]`
 **Description**: Lists fields for ordering `DynamicField` responses in admin API endpoints. Adjust to customize admin sorting.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "label"]`  
+**Type**: `List[str]`
+**Default**: `["name", "label"]`
 **Description**: Specifies searchable fields in admin `DynamicField` API endpoints. Modify to enhance admin search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for admin `DynamicField` API endpoints. Customize or disable as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for admin `DynamicField` API responses. Adjust or disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for admin `DynamicField` API endpoints. Use this for additional admin access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for admin `DynamicField` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for admin `DynamicField` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all fields via the admin `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual fields by ID via the admin `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_CREATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits creating new fields via the admin `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_UPDATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows updating existing fields via the admin `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_DYNAMIC_FIELD_ALLOW_DELETE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits deleting fields via the admin `DynamicField` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.field_type.FieldTypeSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.field_type.FieldTypeSerializer"`
 **Description**: Defines the serializer class for `FieldType` objects in public API endpoints. Customize this for field type serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["created_at", "updated_at"]`  
+**Type**: `List[str]`
+**Default**: `["created_at", "updated_at"]`
 **Description**: Lists fields for ordering `FieldType` API responses. Adjust to control field type sorting options.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "label", "description"]`  
+**Type**: `List[str]`
+**Default**: `["name", "label", "description"]`
 **Description**: Specifies searchable fields in `FieldType` API endpoints. Modify to enhance field type search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for `FieldType` API endpoints. Customize or disable as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for `FieldType` API responses. Adjust or disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for `FieldType` API endpoints. Use this for additional access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for `FieldType` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for `FieldType` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all field types via the public `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FIELD_TYPE_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual field types by ID via the public `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.field_type.FieldTypeSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.field_type.FieldTypeSerializer"`
 **Description**: Defines the serializer class for `FieldType` objects in admin API endpoints. Customize for admin-specific field type serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["created_at", "updated_at"]`  
+**Type**: `List[str]`
+**Default**: `["created_at", "updated_at"]`
 **Description**: Lists fields for ordering `FieldType` responses in admin API endpoints. Adjust to customize admin sorting.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["name", "label", "description"]`  
+**Type**: `List[str]`
+**Default**: `["name", "label", "description"]`
 **Description**: Specifies searchable fields in admin `FieldType` API endpoints. Modify to enhance admin search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for admin `FieldType` API endpoints. Customize or disable as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for admin `FieldType` API responses. Adjust or disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for admin `FieldType` API endpoints. Use this for additional admin access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for admin `FieldType` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for admin `FieldType` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all field types via the admin `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual field types by ID via the admin `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_CREATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits creating new field types via the admin `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_UPDATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows updating existing field types via the admin `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FIELD_TYPE_ALLOW_DELETE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits deleting field types via the admin `FieldType` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.form_submission.FormSubmissionSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.form_submission.FormSubmissionSerializer"`
 **Description**: Defines the serializer class for `FormSubmission` objects in public API endpoints. Customize this for submission serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["submitted_at"]`  
+**Type**: `List[str]`
+**Default**: `["submitted_at"]`
 **Description**: Lists fields for ordering `FormSubmission` API responses. Adjust to control submission sorting options.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["form__name", "form__description"]`  
+**Type**: `List[str]`
+**Default**: `["form__name", "form__description"]`
 **Description**: Specifies searchable fields in `FormSubmission` API endpoints. Modify to enhance submission search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for `FormSubmission` API endpoints. Customize or disable as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for `FormSubmission` API responses. Adjust or disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for `FormSubmission` API endpoints. Use this for additional access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for `FormSubmission` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for `FormSubmission` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all submissions via the public `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual submissions by ID via the public `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_CREATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits creating new submissions via the public `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_UPDATE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows updating existing submissions via the public `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_FORM_SUBMISSION_ALLOW_DELETE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Permits deleting submissions via the public `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_SERIALIZER_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.serializers.form_submission.FormSubmissionSerializer"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.serializers.form_submission.FormSubmissionSerializer"`
 **Description**: Defines the serializer class for `FormSubmission` objects in admin API endpoints. Customize for admin-specific submission serialization.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ORDERING_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["submitted_at"]`  
+**Type**: `List[str]`
+**Default**: `["submitted_at"]`
 **Description**: Lists fields for ordering `FormSubmission` responses in admin API endpoints. Adjust to customize admin sorting.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_SEARCH_FIELDS`
-**Type**: `List[str]`  
-**Default**: `["form__name", "form__description"]`  
+**Type**: `List[str]`
+**Default**: `["form__name", "form__description"]`
 **Description**: Specifies searchable fields in admin `FormSubmission` API endpoints. Modify to enhance admin search capabilities.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_THROTTLE_CLASSES`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.throttlings.RoleBasedUserRateThrottle"`
 **Description**: Defines the throttle class for admin `FormSubmission` API endpoints. Customize or disable as needed.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_PAGINATION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`  
+**Type**: `Optional[str]`
+**Default**: `"dynamic_form.api.paginations.DefaultLimitOffSetPagination"`
 **Description**: Specifies the pagination class for admin `FormSubmission` API responses. Adjust or disable pagination.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_EXTRA_PERMISSION_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Adds an extra permission class for admin `FormSubmission` API endpoints. Use this for additional admin access control.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_PARSER_CLASSES`
-**Type**: `List[str]`  
-**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)  
+**Type**: `List[str]`
+**Default**: Standard DRF parsers (`JSONParser`, `MultiPartParser`, `FormParser`)
 **Description**: Lists parser classes for admin `FormSubmission` API requests. Customize to support specific data formats.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_FILTERSET_CLASS`
-**Type**: `Optional[str]`  
-**Default**: `None`  
+**Type**: `Optional[str]`
+**Default**: `None`
 **Description**: Specifies a custom filterset class for admin `FormSubmission` API endpoints. Enable advanced filtering with a custom path.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_LIST`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Enables listing all submissions via the admin `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_RETRIEVE`
-**Type**: `bool`  
-**Default**: `True`  
+**Type**: `bool`
+**Default**: `True`
 **Description**: Allows retrieving individual submissions by ID via the admin `FormSubmission` API. Set to `False` to disable this endpoint.
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_CREATE`
-**Type**: `bool`  
-**Default**: `False`  
+**Type**: `bool`
+**Default**: `False`
 **Description**: Permits creating new submissions via the admin `FormSubmission` API. Set to `True` to enable this endpoint (disabled by default for admin).
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_UPDATE`
-**Type**: `bool`  
-**Default**: `False`  
+**Type**: `bool`
+**Default**: `False`
 **Description**: Allows updating existing submissions via the admin `FormSubmission` API. Set to `True` to enable this endpoint (disabled by default for admin).
 
 ---
 
 ### `DYNAMIC_FORM_API_ADMIN_FORM_SUBMISSION_ALLOW_DELETE`
-**Type**: `bool`  
-**Default**: `False`  
+**Type**: `bool`
+**Default**: `False`
 **Description**: Permits deleting submissions via the admin `FormSubmission` API. Set to `True` to enable this endpoint (disabled by default for admin).
 
 ---

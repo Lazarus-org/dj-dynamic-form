@@ -6,7 +6,7 @@ requires = [ "poetry-core>=2,<3" ]
 [project]
 name = "dj-dynamic-form"
 version = "1.0.0"
-description = ""
+description = "A Django package that empowers developers to create, manage, and process dynamic forms within Django applications."
 readme = "README.md"
 keywords = [ "django", "django dynamic form", "dynamic", "dynamic form", "form" ]
 
