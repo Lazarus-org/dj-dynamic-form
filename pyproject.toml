@@ -8,7 +8,7 @@ name = "dj-dynamic-form"
 version = "1.0.0"
 description = ""
 readme = "README.md"
-keywords = [ "form", "dynamic form", "django", "django dynamic form", "dynamic" ]
+keywords = [ "django", "django dynamic form", "dynamic", "dynamic form", "form" ]
 
 license = { text = "MIT" }
 authors = [
@@ -56,6 +56,7 @@ django = [
   { version = ">=4.2,<5.3", python = ">=3.10" },      # Django 4.2 and 5.x for Python 3.10+
 ]
 djangorestframework = "^3.14.0"
+drf-nested-routers = "^0.94.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"
@@ -144,6 +145,7 @@ disable = [
   "R0913", # Too many arguments
   "R0902", # Too many instance attributes
   "R0911", # Too many return statements
+  "R0915", # Too many statements
   "W0707", # Missing 'from' in exception handling
 ]
 max-line-length = 88
