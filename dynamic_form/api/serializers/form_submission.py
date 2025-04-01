@@ -1,15 +1,13 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
 
 from dynamic_form.api.serializers.form import DynamicFormSerializer
 from dynamic_form.api.serializers.helper.get_serializer_cls import user_serializer_class
-from dynamic_form.models import FormSubmission, DynamicForm
+from dynamic_form.models import DynamicForm, FormSubmission
 
 
 class FormSubmissionSerializer(serializers.ModelSerializer):
-    """
-    Serializer for FormSubmission model.
-    """
+    """Serializer for FormSubmission model."""
 
     form = DynamicFormSerializer(read_only=True)
     form_id = serializers.IntegerField(
@@ -24,18 +22,17 @@ class FormSubmissionSerializer(serializers.ModelSerializer):
         fields = "__all__"
         read_only_fields = ["submitted_at", "user"]
 
-    def validate(self, data):
-        """
-        Validates that submitted data matches the expected form structure.
-        """
+    def validate(self, attrs):
+        """Validates that submitted data matches the expected form
+        structure."""
         form_id = (
-            data["form_id"]
-            if data.get("form_id") is not None
+            attrs["form_id"]
+            if attrs.get("form_id") is not None
             else self.instance.form_id if self.instance and self.partial else None
         )
         submitted_data = (
-            data["submitted_data"]
-            if data.get("submitted_data") is not None
+            attrs["submitted_data"]
+            if attrs.get("submitted_data") is not None
             else (
                 self.instance.submitted_data if self.instance and self.partial else None
             )
@@ -62,12 +59,11 @@ class FormSubmissionSerializer(serializers.ModelSerializer):
                     {field.name: _("This field is required.")}
                 )
 
-        return data
+        return attrs
 
     def create(self, validated_data):
-        """
-        Create a new FormSubmission instance, setting the user from the request if authenticated.
-        """
+        """Create a new FormSubmission instance, setting the user from the
+        request if authenticated."""
         request = self.context.get("request")
         if request and hasattr(request, "user") and request.user.is_authenticated:
             validated_data["user"] = request.user

@@ -14,7 +14,8 @@ from dynamic_form.validators.config_validators import (
 
 @register()
 def check_dynamic_form_settings(app_configs: Any, **kwargs: Any) -> List[Error]:
-    """Check and validate DynamicForm-related settings in the Django configuration.
+    """Check and validate DynamicForm-related settings in the Django
+    configuration.
 
     This function performs validation of all DynamicForm-related settings defined in
     the Django settings, including admin settings, global API settings, and specific
@@ -33,6 +34,7 @@ def check_dynamic_form_settings(app_configs: Any, **kwargs: Any) -> List[Error]:
     --------
     List[Error]
         A list of `Error` objects for any detected configuration issues.
+
     """
     errors: List[Error] = []
 

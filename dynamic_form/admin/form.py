@@ -7,9 +7,7 @@ from dynamic_form.settings.conf import config
 
 @admin.register(DynamicForm, site=config.admin_site_class)
 class DynamicFormAdmin(AdminPermissionControlMixin, admin.ModelAdmin):
-    """
-    Admin configuration for managing Dynamic Forms.
-    """
+    """Admin configuration for managing Dynamic Forms."""
 
     list_display = ("id", "name", "is_active", "created_at", "updated_at")
     list_display_links = ("id", "name")

@@ -7,9 +7,7 @@ from dynamic_form.settings.conf import config
 
 @admin.register(FieldType, site=config.admin_site_class)
 class FieldTypeAdmin(AdminPermissionControlMixin, admin.ModelAdmin):
-    """
-    Admin configuration for managing Field Types.
-    """
+    """Admin configuration for managing Field Types."""
 
     list_display = ("id", "name", "label", "is_active", "created_at")
     list_display_links = ("id", "name")

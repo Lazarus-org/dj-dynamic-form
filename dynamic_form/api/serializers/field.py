@@ -1,17 +1,18 @@
-from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
+from rest_framework import serializers
 
 from dynamic_form.api.serializers.field_type import FieldTypeSerializer
 from dynamic_form.models import DynamicField, DynamicForm, FieldType
 
 
 class DynamicFieldSerializer(serializers.ModelSerializer):
-    """
-    Serializer for DynamicField model.
+    """Serializer for DynamicField model.
 
-    Validates that each field name is unique within its associated form during
-    creation and updates. Ensures the referenced form exists and is active.
-    Supports partial updates (PATCH) by making field_type_id optional.
+    Validates that each field name is unique within its associated form
+    during creation and updates. Ensures the referenced form exists and
+    is active. Supports partial updates (PATCH) by making field_type_id
+    optional.
+
     """
 
     field_type = FieldTypeSerializer(read_only=True)
@@ -27,8 +28,8 @@ class DynamicFieldSerializer(serializers.ModelSerializer):
         read_only_fields = ["form"]
 
     def validate(self, attrs):
-        """
-        Validate the field data, ensuring the field type exists and the field name is unique per form.
+        """Validate the field data, ensuring the field type exists and the
+        field name is unique per form.
 
         For PATCH updates, only validates field_type_id if provided.
         Preserves existing form and field_type if not included in the request.
@@ -41,6 +42,7 @@ class DynamicFieldSerializer(serializers.ModelSerializer):
 
         Raises:
             serializers.ValidationError: If the form is invalid or the field name is not unique.
+
         """
         # Get form from view's URL kwargs
         view = self.context.get("view")

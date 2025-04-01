@@ -7,9 +7,7 @@ from dynamic_form.settings.conf import config
 
 @admin.register(FormSubmission, site=config.admin_site_class)
 class FormSubmissionAdmin(AdminPermissionControlMixin, admin.ModelAdmin):
-    """
-    Admin configuration for managing Form Submissions.
-    """
+    """Admin configuration for managing Form Submissions."""
 
     list_display = ("id", "user", "form", "submitted_at")
     list_display_links = ("id", "user")
